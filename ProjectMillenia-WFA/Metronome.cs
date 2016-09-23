@@ -15,24 +15,30 @@ namespace ProjectMillenia_WFA
         private double mInterval;
 
         public int BPM { get; set; }
-        public double scale { get; set;}
+        public double scaleDenominator { get; set;}
+        public double scaleNumerator { get; set;}
 
         private int beepCounter = 1;
         public bool isWorking = false;
 
 
-
-        public Metronome(int bpm, double ScaleSize)
+        public Metronome() { this.mTime.Elapsed += MTime_Elapsed; }
+        public Metronome(int bpm, double ScaleDenom, double ScaleNumer)
         {
             this.mTime.Elapsed += MTime_Elapsed;
 
             this.BPM = bpm;
-            this.scale = ScaleSize;
-
-            this.mInterval = aMinute*bpm;
-            mTime.Interval += mInterval;
+            this.scaleDenominator = ScaleDenom;
+            this.scaleNumerator = ScaleNumer;
 
 
+
+        }
+
+        public void SetInterval()
+        {
+            this.mInterval = (aMinute * scaleNumerator) / (BPM * scaleDenominator);
+            mTime.Interval = mInterval;
         }
 
         public void Start()
@@ -42,7 +48,7 @@ namespace ProjectMillenia_WFA
         }
         public void Stop()
         {
-           
+          //  this.mTime.Elapsed -= MTime_Elapsed;  JUNK: THIS USED TO DEINTIALIZE THE OBJECT
             mTime.Stop();
            
         }
@@ -56,7 +62,7 @@ namespace ProjectMillenia_WFA
         {
             
 
-            if (beepCounter % scale == 0)
+            if (beepCounter % scaleDenominator == 0)
             {
                 Console.Beep(4000, 100);
                 beepCounter = 1;
