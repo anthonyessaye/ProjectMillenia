@@ -147,10 +147,6 @@
     <None Include="Resources\bass.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Downloads\FftGuitarTuner_src\SoundAnalysis\SoundAnalysis.csproj">
-      <Project>{aba54dc3-324b-49de-b79e-c4f573306e4f}</Project>
-      <Name>SoundAnalysis</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MidiToSheetMusic\MidiToSheetMusic.csproj">
       <Project>{38d1f4e7-5789-4361-847e-7a7d7c673377}</Project>
       <Name>MidiToSheetMusic</Name>

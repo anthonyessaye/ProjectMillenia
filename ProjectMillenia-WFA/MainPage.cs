@@ -12,7 +12,6 @@ using System.Threading;
 using System.IO;
 using MidiToSheetMusic;
 using MidiSheetMusic;
-using SoundAnalysis;
 
 
 
