@@ -67,12 +67,6 @@
     <Compile Include="ChordSymbol.cs" />
     <Compile Include="ClefMeasures.cs" />
     <Compile Include="ClefSymbol.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="KeySignature.cs" />
     <Compile Include="LyricSymbol.cs" />
     <Compile Include="Main.cs" />
