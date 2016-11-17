@@ -50,9 +50,6 @@
             this.settingsToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordBtn = new System.Windows.Forms.Button();
-            this.TheEverythingTab = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.CanvasBox = new System.Windows.Forms.GroupBox();
             this.MusicSheetBox = new System.Windows.Forms.GroupBox();
             this.imagePanel = new System.Windows.Forms.Panel();
@@ -63,13 +60,12 @@
             this.EndTime_Lbl = new System.Windows.Forms.Label();
             this.WaveForm = new ProjectMillenia_WFA.CustomWaveViewer();
             this.StartTime_Lbl = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.selectorBPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScaleNumeratorScroll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScaleDenominatorScroll)).BeginInit();
             this.SettingsBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.TheEverythingTab.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.CanvasBox.SuspendLayout();
             this.MusicSheetBox.SuspendLayout();
             this.imagePanel.SuspendLayout();
@@ -182,9 +178,9 @@
             this.PlayWavBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayWavBtn.BackgroundImage")));
             this.PlayWavBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.PlayWavBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.PlayWavBtn.Location = new System.Drawing.Point(7, 23);
+            this.PlayWavBtn.Location = new System.Drawing.Point(99, 161);
             this.PlayWavBtn.Name = "PlayWavBtn";
-            this.PlayWavBtn.Size = new System.Drawing.Size(66, 40);
+            this.PlayWavBtn.Size = new System.Drawing.Size(61, 55);
             this.PlayWavBtn.TabIndex = 9;
             this.PlayWavBtn.UseVisualStyleBackColor = true;
             this.PlayWavBtn.Visible = false;
@@ -195,9 +191,9 @@
             this.StopWavBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("StopWavBtn.BackgroundImage")));
             this.StopWavBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.StopWavBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.StopWavBtn.Location = new System.Drawing.Point(71, 23);
+            this.StopWavBtn.Location = new System.Drawing.Point(166, 161);
             this.StopWavBtn.Name = "StopWavBtn";
-            this.StopWavBtn.Size = new System.Drawing.Size(67, 40);
+            this.StopWavBtn.Size = new System.Drawing.Size(61, 55);
             this.StopWavBtn.TabIndex = 10;
             this.StopWavBtn.UseVisualStyleBackColor = true;
             this.StopWavBtn.Visible = false;
@@ -288,7 +284,7 @@
             // 
             // recordBtn
             // 
-            this.recordBtn.Location = new System.Drawing.Point(6, 69);
+            this.recordBtn.Location = new System.Drawing.Point(36, 222);
             this.recordBtn.Name = "recordBtn";
             this.recordBtn.Size = new System.Drawing.Size(132, 40);
             this.recordBtn.TabIndex = 12;
@@ -296,51 +292,14 @@
             this.recordBtn.UseVisualStyleBackColor = true;
             this.recordBtn.Click += new System.EventHandler(this.recordBtn_Click);
             // 
-            // TheEverythingTab
-            // 
-            this.TheEverythingTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TheEverythingTab.Controls.Add(this.tabPage2);
-            this.TheEverythingTab.Controls.Add(this.tabPage1);
-            this.TheEverythingTab.Location = new System.Drawing.Point(338, 31);
-            this.TheEverythingTab.Name = "TheEverythingTab";
-            this.TheEverythingTab.SelectedIndex = 0;
-            this.TheEverythingTab.Size = new System.Drawing.Size(506, 542);
-            this.TheEverythingTab.TabIndex = 11;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(498, 513);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Whatever";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.CanvasBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(498, 513);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Transcribe";
-            // 
             // CanvasBox
             // 
             this.CanvasBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CanvasBox.Controls.Add(this.MusicSheetBox);
-            this.CanvasBox.Controls.Add(this.recordBtn);
             this.CanvasBox.Controls.Add(this.WaveFormBox);
-            this.CanvasBox.Controls.Add(this.StopWavBtn);
-            this.CanvasBox.Controls.Add(this.PlayWavBtn);
-            this.CanvasBox.Location = new System.Drawing.Point(-4, -17);
+            this.CanvasBox.Location = new System.Drawing.Point(338, 27);
             this.CanvasBox.Name = "CanvasBox";
             this.CanvasBox.Size = new System.Drawing.Size(506, 546);
             this.CanvasBox.TabIndex = 9;
@@ -383,9 +342,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(383, 359);
+            this.pictureBox.Size = new System.Drawing.Size(389, 359);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
@@ -395,12 +354,12 @@
             this.NextImageBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NextImageBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NextImageBtn.BackgroundImage")));
             this.NextImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.NextImageBtn.Enabled = false;
             this.NextImageBtn.Location = new System.Drawing.Point(447, 174);
             this.NextImageBtn.Name = "NextImageBtn";
             this.NextImageBtn.Size = new System.Drawing.Size(40, 40);
             this.NextImageBtn.TabIndex = 1;
             this.NextImageBtn.UseVisualStyleBackColor = true;
+            this.NextImageBtn.Click += new System.EventHandler(this.NextImageBtn_Click);
             // 
             // PrevImageBtn
             // 
@@ -413,6 +372,7 @@
             this.PrevImageBtn.Size = new System.Drawing.Size(40, 40);
             this.PrevImageBtn.TabIndex = 0;
             this.PrevImageBtn.UseVisualStyleBackColor = true;
+            this.PrevImageBtn.Click += new System.EventHandler(this.PrevImageBtn_Click);
             // 
             // WaveFormBox
             // 
@@ -421,9 +381,9 @@
             this.WaveFormBox.Controls.Add(this.EndTime_Lbl);
             this.WaveFormBox.Controls.Add(this.WaveForm);
             this.WaveFormBox.Controls.Add(this.StartTime_Lbl);
-            this.WaveFormBox.Location = new System.Drawing.Point(141, 21);
+            this.WaveFormBox.Location = new System.Drawing.Point(7, 21);
             this.WaveFormBox.Name = "WaveFormBox";
-            this.WaveFormBox.Size = new System.Drawing.Size(359, 123);
+            this.WaveFormBox.Size = new System.Drawing.Size(493, 123);
             this.WaveFormBox.TabIndex = 9;
             this.WaveFormBox.TabStop = false;
             this.WaveFormBox.Text = "Wave Form";
@@ -432,7 +392,7 @@
             // 
             this.EndTime_Lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EndTime_Lbl.AutoSize = true;
-            this.EndTime_Lbl.Location = new System.Drawing.Point(322, 107);
+            this.EndTime_Lbl.Location = new System.Drawing.Point(456, 107);
             this.EndTime_Lbl.Name = "EndTime_Lbl";
             this.EndTime_Lbl.Size = new System.Drawing.Size(48, 17);
             this.EndTime_Lbl.TabIndex = 13;
@@ -440,13 +400,15 @@
             // 
             // WaveForm
             // 
-            this.WaveForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaveForm.Location = new System.Drawing.Point(3, 18);
+            this.WaveForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WaveForm.Location = new System.Drawing.Point(9, 18);
             this.WaveForm.Name = "WaveForm";
             this.WaveForm.PenColor = System.Drawing.Color.DodgerBlue;
             this.WaveForm.PenWidth = 1F;
             this.WaveForm.SamplesPerPixel = 128;
-            this.WaveForm.Size = new System.Drawing.Size(353, 102);
+            this.WaveForm.Size = new System.Drawing.Size(478, 102);
             this.WaveForm.StartPosition = ((long)(0));
             this.WaveForm.TabIndex = 0;
             this.WaveForm.WaveStream = null;
@@ -460,17 +422,20 @@
             this.StartTime_Lbl.TabIndex = 12;
             this.StartTime_Lbl.Text = "- - : - -";
             // 
-            // MainPage
+            // TranscribePage
             // 
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(856, 585);
-            this.Controls.Add(this.TheEverythingTab);
+            this.Controls.Add(this.CanvasBox);
+            this.Controls.Add(this.recordBtn);
             this.Controls.Add(this.SettingsBox);
             this.Controls.Add(this.StartMetBtn);
+            this.Controls.Add(this.StopWavBtn);
+            this.Controls.Add(this.PlayWavBtn);
             this.Controls.Add(this.menuStrip1);
             this.HelpButton = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainPage";
+            this.Name = "TranscribePage";
             this.Text = "Project Millennia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainPage_FormClosing);
@@ -482,8 +447,6 @@
             this.SettingsBox.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.TheEverythingTab.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.CanvasBox.ResumeLayout(false);
             this.MusicSheetBox.ResumeLayout(false);
             this.imagePanel.ResumeLayout(false);
@@ -517,8 +480,6 @@
         private System.Windows.Forms.Button recordBtn;
         private System.Windows.Forms.ToolStripMenuItem openMidiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TabControl TheEverythingTab;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox CanvasBox;
         private System.Windows.Forms.GroupBox MusicSheetBox;
         private System.Windows.Forms.Panel imagePanel;
@@ -529,6 +490,6 @@
         private System.Windows.Forms.Label EndTime_Lbl;
         private CustomWaveViewer WaveForm;
         private System.Windows.Forms.Label StartTime_Lbl;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

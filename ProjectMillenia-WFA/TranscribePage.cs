@@ -44,7 +44,7 @@ namespace ProjectMillenia_WFA
 
         
 
-        private string RecordFileSaveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Project Millenia/Recordings/";
+        private string RecordFileSaveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Project Millennia/Recordings/";
         private string RecordFileSaveLocationUpgrader(string FileName, string FilePath)
         {
             
@@ -143,20 +143,21 @@ namespace ProjectMillenia_WFA
         private void openMidiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TheMidi = new MidiHandler();
-            TheMidi.ParseToSheet();
 
+            if (TheMidi.isFileSelected == true)
+            {
+                if (TheMidi.StaticPageNumber > 1)
+                    NextImageBtn.Enabled = true;
 
-            if (TheMidi.StaticPageNumber > 1)
-              NextImageBtn.Enabled = true;
-            
-              pictureBox.ImageLocation = TheMidi.SheetFileSaveLocation + TheMidi.image_filename + "_" + TheMidi.PageNumber.ToString() + ".png";
-              pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            this.pictureBox.MouseClick += new MouseEventHandler(ZoomInControl);
-            pictureBox.MouseClick += new MouseEventHandler(ZoomOutControl);
-             
+                pictureBox.ImageLocation = TheMidi.SheetFileSaveLocation + TheMidi.image_filename + "_" + TheMidi.PageNumber.ToString() + ".png";
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                this.pictureBox.MouseClick += new MouseEventHandler(ZoomInControl);
+                pictureBox.MouseClick += new MouseEventHandler(ZoomOutControl);
 
+                TheMidi.DisposeMidi();
 
-            MessageBox.Show("This Midi File has been successfully transcribed");
+                MessageBox.Show("This Midi File has been successfully transcribed");
+            }
         }
 
         private void PlayWavBtnClick(object sender, EventArgs e)

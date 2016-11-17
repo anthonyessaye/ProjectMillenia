@@ -14,7 +14,7 @@ namespace ProjectMillenia_WFA
 
         public CheckAndCreateDirectory()
         {
-             folderName = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Project Millenia/";
+             folderName = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Project Millennia/";
              RecordingString = System.IO.Path.Combine(folderName, "Recordings");
              SheetString = System.IO.Path.Combine(folderName, "Sheets");
         }
